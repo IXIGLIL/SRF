@@ -31,6 +31,10 @@
 
 	<table align="center" border=1>
 			<td colspan=2 align="center"><b>首頁</b></td><tr>
+			<td colspan=2 align="center"><b>首頁</b></td><tr>
+			<td colspan=2 align="center"><b>首頁</b></td><tr>
+			<td colspan=2 align="center"><b>首頁</b></td><tr>
+			<td colspan=2 align="center"><b>首頁</b></td><tr>
 			<td colspan=2>工號：<s:textfield name="userNo" theme="simple"/></td><tr>
 			<td colspan=2>密碼：<s:password name="userPwd" theme="simple"/></td><tr>
 			<td width="50%" align=center><s:submit value="送出" align="left" theme="simple"/></td>
