@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"></property>
+		<property name="url" value= "jdbc:oracle:thin:@192.168.255.57:1521/RT2"></property>
+		<property name="username" value="csm"></property>
+        <property name="password" value="rtcsm2888"></property>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<!-- <prop key="hibernate.show_sql">false</prop> -->
+			</props>
+		</property>
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		<property name="configurationClass">
+			<value>org.hibernate.cfg.AnnotationConfiguration</value>
+		</property>
+		
+		<property name="mappingLocations">
+			<list>
+				<value>classpath:model/**.hbm.xml</value>
+			</list>
+		</property>
+	</bean>	
+	
+	<!-- Action -->
+	<bean id="RegisterAction" class="action.RegisterAction" scope="prototype">
+		<property name="userService" ref="userService" />
+		<property name="deptService" ref="deptService" />
+		<property name="transferService" ref="transferService" />
+		<property name="validateService" ref="validateService" />
+	</bean>
+	
+	<bean id="SearchTranAction" class="action.SearchTranAction" scope="prototype">
+		<property name="tranService" ref="tranService" />
+	</bean>
+	
+	<bean id="CreateTranAction" class="action.CreateTranAction" scope="prototype">
+		<property name="userService" ref="userService" />
+		<property name="tranService" ref="tranService" />
+		<property name="transferService" ref="transferService" />
+	</bean>
+	
+	<bean id="TranDetailAction" class="action.TranDetailAction" scope="prototype">
+		<property name="tranService" ref="tranService" />
+		<property name="transferService" ref="transferService" />
+		<property name="userService" ref="userService" />
+	</bean>
+	
+	<bean id="MenuAction" class="action.MenuAction" scope="prototype">
+		<property name="userService" ref="userService" />
+		<property name="transferService" ref="transferService" />
+	</bean>
+	
+	
+	
+	<!-- Service -->
+	<bean id="userService" class="service.impl.UserServiceImpl" scope="prototype">
+		<property name="userDAO" ref="userDAO" />
+	</bean>
+	
+	<bean id="deptService" class="service.impl.DeptServiceImpl" scope="prototype">
+		<property name="deptDAO" ref="deptDAO" />
+	</bean>
+	
+	<bean id="validateService" class="service.impl.ValidateServiceImpl" scope="prototype">
+		<property name="validateDAO" ref="validateDAO" />
+	</bean>
+	
+	<bean id="tranService" class="service.impl.TranServiceImpl" scope="prototype">
+		<property name="tranDAO" ref="tranDAO" />
+	</bean>
+	
+	<bean id="transferService" class="service.impl.TransferServiceImpl" scope="prototype">
+		<property name="transferDAO" ref="transferDAO" />
+	</bean>
+	
+	
+	
+	<!-- DAO -->
+	<bean id="userDAO" class="dao.impl.UserDAOImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="deptDAO" class="dao.impl.DeptDAOImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="validateDAO" class="dao.impl.ValidateDAOImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="tranDAO" class="dao.impl.TranDAOImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="transferDAO" class="dao.impl.TransferDAOImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+</beans>

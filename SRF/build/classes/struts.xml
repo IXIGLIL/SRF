@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+
+	<package name="login" extends="struts-default">
+		<action name="loginAction" class="action.LoginAction">
+			<result name="success">/Menu.jsp</result>
+			<result name="input">/Login.jsp</result>
+		</action>
+		
+		<action name="menuAction" class="action.MenuAction">
+			<result name="create">/CreateTran.jsp</result>
+			<result name="search">/SearchTran.jsp</result>
+			<result name="menu">/Menu.jsp</result>
+			<result name="input">/Login.jsp</result>
+		</action>
+	</package>
+		
+	<package name="register" extends="struts-default">
+		<action name="registerAction" class="RegisterAction">
+			<result name="success">/RegisterSuccess.jsp</result> 
+			<result name="input">/Register.jsp</result>
+		</action>
+	</package>
+	
+	<package name="createTran" extends="struts-default">
+		<action name="createTran" class="action.CreateTranAction">
+			<interceptor-ref name="exception"/>
+            <interceptor-ref name="i18n"/>
+            <interceptor-ref name="fileUpload">
+       			<param name="allowedTypes">text/plain,image/jpg,application/msword,application/pdf,application/vnd.ms-excel,application/octet-stream,application/download,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/zip</param>
+       			<param name="maximumSize">1024000</param>
+  			</interceptor-ref> 
+            <interceptor-ref name="params">
+                <param name="excludeParams">dojo\..*,^struts\..*</param>
+            </interceptor-ref>
+            <interceptor-ref name="validation">
+                <param name="excludeMethods">input,back,cancel,browse</param>
+            </interceptor-ref>
+            <interceptor-ref name="workflow">
+                <param name="excludeMethods">input,back,cancel,browse</param>
+            </interceptor-ref>
+		
+			<result name="success">/CreateSuccess.jsp</result>
+			<result name="input">/CreateTran.jsp</result>
+		</action>
+	</package>
+	
+	<package name="searchTran" extends="struts-default">
+		<action name="searchTran" class="SearchTranAction">
+			<result name="success">/TranList.jsp</result>
+			<result name="input">/Error.jsp</result>
+		</action>
+	</package>
+	
+	<package name="tranDetail" extends="struts-default">
+		<action name="tranDetail" class="TranDetailAction" method="findDetail">
+			<result name="success">/TranDetail.jsp</result>
+			<result name="input">/TranDetail.jsp</result>
+		</action>
+		<action name="detailAction" class="TranDetailAction" method="detailAction">
+			<interceptor-ref name="exception"/>
+            <interceptor-ref name="i18n"/>
+            <interceptor-ref name="fileUpload">
+       			<param name="allowedTypes">text/plain,image/jpg,application/msword,application/pdf,application/vnd.ms-excel,application/octet-stream</param>
+       			<param name="maximumSize">1024000</param>
+  			</interceptor-ref> 
+            <interceptor-ref name="params">
+                <param name="excludeParams">dojo\..*,^struts\..*</param>
+            </interceptor-ref>
+            <interceptor-ref name="validation">
+                <param name="excludeMethods">input,back,cancel,browse</param>
+            </interceptor-ref>
+            <interceptor-ref name="workflow">
+                <param name="excludeMethods">input,back,cancel,browse</param>
+            </interceptor-ref>
+		
+			<result name="success">/TranDetail.jsp</result>
+			<result name="next">/NextSuccess.jsp</result>
+			<result name="input">/TranDetail.jsp</result>
+		</action>
+	</package>
+		
+	<package name="list" extends="struts-default, json-default">
+ 		<action name="findDeptList" class="RegisterAction" method="findDept">  
+			<result type="json">
+				<param name="root">deptList</param>
+			</result> 
+		</action>
+		
+		<action name="findSupervisorList" class="RegisterAction" method="findSupervisor">
+			<result type="json">
+				<param name="root">supervisorList</param>
+			</result>
+		</action>
+		
+		<action name="findClassList" class="CreateTranAction" method="findClass">
+			<result>
+				<param name="root">classList</param>
+			</result>
+		</action>
+		
+		<action name="findPlaceList" class="CreateTranAction" method="findPlace">
+			<result>
+				<param name="root">placeList</param>
+			</result>
+		</action>
+		
+		<action name="findTranDetail" class="TranDetailAction" method="findDetail">
+			<result type="json">
+				<param name="root">tranList</param>
+			</result>			
+		</action>
+		
+		<action name="findItOwnerList" class="TranDetailAction" method="findIt">
+			<result>
+				<param name="root">itList</param>
+			</result>
+		</action>
+	</package>
+</struts>

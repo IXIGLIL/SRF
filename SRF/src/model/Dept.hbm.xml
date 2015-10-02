@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/2 ?W?? 09:43:01 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="model.Dept" table="SRF_DEPT">
+		<id name="deptNo" type="int">
+			<column name="DEPT_NO" precision="20" scale="0" />
+		</id>
+		<property name="deptName" type="string">
+			<column name="DEPT_NAME" length="20" />
+		</property>
+	
+		<set name="user" table="SRF_USER" cascade="all">
+			<key column="USER_DEPT" />
+			<one-to-many class="model.User" />
+		</set>
+	</class>
+	
+</hibernate-mapping>

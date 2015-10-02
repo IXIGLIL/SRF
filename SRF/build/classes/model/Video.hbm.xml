@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/2 ?W?? 09:43:01 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="model.Video" table="SRF_VIDEO">
+		<id name="videoNo" type="string">
+			<column name="VIDEO_NO" precision="20" scale="0" />
+		</id>
+		<property name="videoDate" type="timestamp">
+			<column name="VIDEO_DATE" length="20" />
+		</property>
+		<property name="videoPlace" type="int">
+			<column name="VIDEO_PLACE" length="20" />
+		</property>
+		<property name="videoContact" type="string">
+			<column name="VIDEO_CONTACT" length="20" />
+		</property>
+	</class>
+	
+</hibernate-mapping>

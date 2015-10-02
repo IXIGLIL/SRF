@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/2 ?W?? 09:43:01 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="model.User" table="SRF_USER">
+		<id name="userNo" type="string">
+			<column name="USER_NO" precision="20" scale="0" />
+		</id>
+		<property name="userPwd" type="string">
+			<column name="USER_PWD" length="20" />
+		</property>
+		<property name="userName" type="string">
+			<column name="USER_NAME" length="20" />
+		</property>
+		<property name="userDept" type="int">
+			<column name="USER_DEPT" length="20" />
+		</property>
+		<property name="userMail" type="string">
+			<column name="USER_MAIL" length="50" />
+		</property>
+		<property name="createDate" type="timestamp">
+			<column name="CREATE_DATE" length="20" />
+		</property>
+		<property name="supervisor" type="string">
+			<column name="SUPERVISOR" length="20" />
+		</property>
+		<property name="hadApply" type="int">
+			<column name="HAD_APPLY" length="20" />
+		</property>
+		<property name="waitApprove" type="int">
+			<column name="WAIT_APPROVE" length="20" />
+		</property>
+		<property name="waitDone" type="int">
+			<column name="WAIT_DONE" length="20" />
+		</property>
+		<property name="waitCheck" type="int">
+			<column name="WAIT_CHECK" length="20" />
+		</property>
+		<property name="beenReject" type="int">
+			<column name="BEEN_REJECT" length="20"/>
+		</property>
+	</class>
+</hibernate-mapping>

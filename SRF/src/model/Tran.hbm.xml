@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/2 ?W?? 09:43:01 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="model.Tran" table="SRF_TRAN">
+		<id name="tranNo" type="string">
+			<column name="TRAN_NO" precision="20" scale="0" />
+		</id>
+		<property name="tranClass" type="int">
+			<column name="CLASS" length="20" />
+		</property>
+		<property name="title" type="string">
+			<column name="TITLE" length="20" />
+		</property>
+		<property name="format" type="string">
+			<column name="FORMAT" length="20" />
+		</property>
+		<property name="memo" type="string">
+			<column name="MEMO" length="20" />
+		</property>
+		<property name="userNo" type="string">
+			<column name="APPLY_USER" length="20" />
+		</property>
+		<property name="userDept" type="int">
+			<column name="APPLY_DEPT" length="20" />
+		</property>
+		<property name="videoNo" type="string">
+			<column name="VIDEO_NO" length="20" />
+		</property>
+		<property name="phoneNo" type="string">
+			<column name="PHONE_NO" length="20" />
+		</property>
+		<property name="attach" type="string">
+			<column name="ATTACH" length="20" />
+		</property>
+		<property name="applyDate" type="timestamp">
+			<column name="APPLY_DATE" length="20" />
+		</property>
+		<property name="itCheck" type="string">
+			<column name="IT_CHECK" length="20" />
+		</property>
+		<property name="supervisorCheck" type="string">
+			<column name="SUPERVISOR_CHECK" length="20" />
+		</property>
+		<property name="supervisor" type="string">
+			<column name="APPLY_SUPERVISOR" length="50" />
+		</property>
+		<property name="rejectUser" type="string">
+			<column name="REJECT_USER" length="20" />
+		</property>
+		<property name="rejectReason" type="string">
+			<column name="REJECT_REASON" length="20" />
+		</property>
+		<property name="itOwner" type="string">
+			<column name="it_owner" length="20" />
+		</property>
+		<property name="itManager" type="string">
+			<column name="IT_MANAGER" length="20" />
+		</property>
+		<property name="requestDate" type="timestamp">
+			<column name="REQUEST_DATE" length="20" />
+		</property>
+		<property name="receiveDate" type="timestamp">
+			<column name="RECEIVE_DATE" length="20" />
+		</property>
+		<property name="rejectDate" type="timestamp">
+			<column name="REJECT_DATE" length="20" />
+		</property>
+		<property name="doneDate" type="timestamp">
+			<column name="DONE_DATE" length="20" />
+		</property>
+		<property name="doneHour" type="string">
+			<column name="DONE_HOUR" length="20" />
+		</property>
+		<property name="checkUser" type="string">
+			<column name="CHECK_USER" length="20" />
+		</property>
+		<property name="checkResult" type="string">
+			<column name="CHECK_RESULT" length="20" />
+		</property>
+		<property name="checkMemo" type="string">
+			<column name="CHECK_MEMO" length="20" />
+		</property>
+		<property name="updateDate" type="timestamp">
+			<column name="UPDATE_DATE" length="20" />
+		</property>
+		<property name="updateUser" type="string">
+			<column name="UPDATE_USER" length="20" />
+		</property>
+		<property name="active" type="string">
+			<column name="ACTIVE" length="20" />
+		</property>
+		<property name="lastStatus" type="int">
+			<column name="LAST_STATUS" length="20" />
+		</property>
+		<property name="status" type="int">
+			<column name="STATUS" length="20" />
+		</property>
+		
+		<!-- <set name="flow" table="SRF_FLOW" cascade="all">
+			<key column="TRAN_NO" />
+			<one-to-many class="model.Flow" />
+		</set> -->
+	</class>
+</hibernate-mapping>

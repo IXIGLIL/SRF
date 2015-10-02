@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015/4/2 ?W?? 09:43:01 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="model.Flow" table="SRF_FLOW">
+		<id name="flowDate" type="timestamp">
+			<column name="FLOW_DATE" length="20" />
+		</id>
+		<property name="tranNo" type="string">
+			<column name="TRAN_NO" length="20" />
+		</property>
+		<property name="flowStatus" type="int">
+			<column name="FLOW_STATUS" length="20" />
+		</property>
+		<property name="flowLastStatus" type="int">
+			<column name="FLOW_LAST_STATUS" length="20" />
+		</property>
+		
+		<many-to-one name="tran" column="TRAN_NO" class="model.Tran" insert="false" update="false"/>
+		
+		<set name="status" table="SRF_STATUS" cascade="all">
+			<key column="STATUS_NO" />
+			<one-to-many class="model.Status" />
+		</set>
+	</class>
+</hibernate-mapping>
